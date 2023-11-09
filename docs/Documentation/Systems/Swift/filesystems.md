@@ -20,7 +20,7 @@ Each fileserver is also connected to a second storage chassis to serve as a redu
 
 Each active project is granted a subdirectory under `/projects/<projectname>`. This is where the bulk of data is expected to be, and where jobs should generally be run from. Storage quotas are based on the allocation award.
 
-Quota usage can be viewed at any time by issuing a `cd` command into the project directory, and using the `df -h` command to view total, used, and remaining available space for the mounted project directory.
+Quota usage can be viewed at any time by issuing a `cd` command into the project directory, and using the `df -h /projects/<projectname>` command to view total, used, and remaining available space for the mounted project directory.
 
 ### NFS Automount System
 
