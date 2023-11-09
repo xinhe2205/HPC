@@ -26,6 +26,7 @@ The most up to date list of partitions can always be found by running the `sinfo
 
 | Partition | Description |
 |-----------|-------------|
+| gpu       | jobs up to two dyas of walltime |
 | long      | jobs up to ten days of walltime |
 | standard  | jobs up to two days of walltime | 
 | parallel  | optimized for large parallel jobs, up to two days of walltime |
@@ -103,6 +104,7 @@ Here is a sample batch script for running the 'hello world' example program, *ru
 #SBATCH --nodes=2
 #SBATCH --tasks-per-node=2
 #SBATCH --exclusive
+#SBATCH --account=hpcapps
 #SBATCH --partition=debug
 #SBATCH --time=00:01:00
 
@@ -128,6 +130,7 @@ Then submit the sbatch script with:
 ```
 sbatch --partition=test runopenmpi
 ```
+Remember to replace *hpcapps* with your account.
 
 ## Building the 'hello world' example 
 
@@ -163,6 +166,7 @@ make
 #SBATCH --nodes=2
 #SBATCH --tasks-per-node=2
 #SBATCH --exclusive
+#SBATCH --account=hpcapps
 #SBATCH --partition=debug
 #SBATCH --time=00:01:00
 
@@ -247,9 +251,9 @@ This gives us:
 
 ```bash
 [nrmc2l@swift-login-1 ~ example]$ ls -l fhostone
--rwxrwxr-x. 1 nrmc2l nrmc2l 36880 Jul 30 13:36 fhostone
+-rwxrwxr-x. 1 nrmc2l nrmc2l 42128 Jul 30 13:36 fhostone
 [nrmc2l@swift-login-1 ~ example]$ ls -l phostone
--rwxrwxr-x. 1 nrmc2l nrmc2l 27536 Jul 30 13:36 phostone
+-rwxrwxr-x. 1 nrmc2l nrmc2l 32784 Jul 30 13:36 phostone
 
 ```
 Note the size of the executable files.  
@@ -270,9 +274,9 @@ Then we can set the variables *OMPI_FC=ifort* and *OMPI_CC=icc*, and recompile:
 
 
 [nrmc2l@swift-login-1 ~ example]$ ls -lt fhostone
--rwxrwxr-x. 1 nrmc2l nrmc2l 951448 Jul 30 13:37 fhostone
+-rwxrwxr-x. 1 nrmc2l nrmc2l 41376 Jul 30 13:37 fhostone
 [nrmc2l@swift-login-1 ~ example]$ ls -lt phostone
--rwxrwxr-x. 1 nrmc2l nrmc2l 155856 Jul 30 13:37 phostone
+-rwxrwxr-x. 1 nrmc2l nrmc2l 32200 Jul 30 13:37 phostone
 [nrmc2l@swift-login-1 ~ example]$ 
 ```
 
@@ -283,7 +287,7 @@ nm fhostone | grep intel | wc
 nm phostone | grep intel | wc
 ```
 
-on the two versions of the program. It will show how many calls to Intel routines are in each, 51 and 36 compared to 0 for the gnu versions.
+on the two versions of the program. It will show how many calls to Intel routines are in each, 51 and 36 compared to 0 for the gnu versions. (it gives all zeroes)
 
 
 ## Building and Running with Intel MPI
@@ -307,8 +311,8 @@ Giving us:
 
 ```bash
 [nrmc2l@swift-login-1 example]$ ls -lt fhostone phostone
--rwxrwxr-x. 1 nrmc2l hpcapps 155696 Aug  5 16:14 phostone
--rwxrwxr-x. 1 nrmc2l hpcapps 947112 Aug  5 16:14 fhostone
+-rwxrwxr-x. 1 nrmc2l hpcapps 160944 Aug  5 16:14 phostone
+-rwxrwxr-x. 1 nrmc2l hpcapps 952352 Aug  5 16:14 fhostone
 [nrmc2l@swift-login-1 example]$ 
 ```
 
@@ -324,6 +328,7 @@ Launch with the srun command:
 ```bash
 srun   ./a.out -F
 ```
+(what is this srun line used for?)
 
 Our IntelMPI batch script is:
 
@@ -334,6 +339,7 @@ Our IntelMPI batch script is:
 #SBATCH --nodes=2
 #SBATCH --tasks-per-node=2
 #SBATCH --exclusive
+#SBATCH --account=hpcapps
 #SBATCH --partition=debug
 #SBATCH --time=00:01:00
 
@@ -378,23 +384,8 @@ The batch script given above can be modified to run VASP. To do so, load the VAS
 ```bash
 ml vasp
 ```
-
-This will give you:
-
-```bash
-
-[nrmc2l@swift-login-1 ~ example]$ which vasp_gam
-/nopt/nrel/apps/210728a/level02/gcc-9.4.0/vasp-6.1.1/bin/vasp_gam
-[nrmc2l@swift-login-1 ~ example]$ which vasp_ncl
-/nopt/nrel/apps/210728a/level02/gcc-9.4.0/vasp-6.1.1/bin/vasp_ncl
-[nrmc2l@swift-login-1 ~ example]$ which vasp_std
-/nopt/nrel/apps/210728a/level02/gcc-9.4.0/vasp-6.1.1/bin/vasp_std
-[nrmc2l@swift-login-1 ~ example]$ 
-```
-
-Note the directory might be different.
-
-Then you need to add calls in your script to set up / point do your data files. So your final script will look something like the following. Here we use data downloaded from NREL's benchmark repository:
+(ml vasp will not return anything)
+Your final script will look something like the following. Here we use data downloaded from NREL's benchmark repository:
 
 ```bash
 #!/bin/bash
@@ -489,7 +480,7 @@ You can get an interactive session on a compute node with the salloc command, as
 ```bash
 [nrmc2l@swift-login-1 ~]$ salloc  --account=hpcapps   --exclusive    --time=01:00:00   --ntasks=16           --nodes=1 --partition=debug
 ```
-
+(this salloc returns error: slurmstepd: error: couldn't chdir to '/home/xhe': No shuch file or directory: going to /tmp instead)
 but replacing *hpcapps* with your account. After you get a session on a node, `module load python` and run as shown above.
 
 ```bash
@@ -555,7 +546,7 @@ Julia is also available via a module.
 Julia can be run in a Jupyter notebook as discussed above. However, before doing so you will need to run the following commands in each Julia version you are using:  
 
 ```bash
-julia> using Pkg
+julia> using Pkg (returns permission denied)
 julia> Pkg.add("IJulia")
 
 ```
