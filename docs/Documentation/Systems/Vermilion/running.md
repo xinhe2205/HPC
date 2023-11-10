@@ -23,7 +23,7 @@ Partitions are flexible and fluid on Vermilion.  A list of partitions can be fou
 
 | Partition Name                          | Qty | RAM    | Cores/node | /var/scratch <br>1K-blocks | AU Charge Factor | 
 | :--:                               | :--: | :--:    | :--:             | :--:   | :--: |                         
-| gpu<br>*1 x NVIDIA Tesla A100*      |  17  | 114 GB |   30            |  6,240,805,336| 12 |       
+| gpu<br>*1 x NVIDIA Tesla A100*      |  16  | 114 GB |   30            |  6,240,805,336| 12 |       
 | lg                                 | 39  | 229 GB |   60            |   1,031,070,000| 7 |
 | std                                | 60  | 114 GB |   30            |     515,010,816| 3.5 |
 | sm                                 | 28  |  61 GB |   16            |     256,981,000| 0.875 |
@@ -37,6 +37,8 @@ The equation for calculating the AU cost of a job on Vermilion is:
 The Walltime is the actual length of time that the job runs, in hours or fractions thereof.
 
 The **Charge Factor** for each partition is listed in the table above. 
+
+!!! Qos factor? Same charge for normal and high priority jobs?
 
 ## Operating Software
 The Vermilion HPC cluster runs fairly current versions of OpenHPC and SLURM on top of OpenStack.
@@ -61,6 +63,8 @@ It is suggested you copy the directory to run the examples:
 cp -r /nopt/nrel/apps/210929a/example ~/example
 cd ~/example
 ```
+
+!!! the copy command throughts error message saying Disk quota exceeded. Is that because the size of copied file (122Gb) exceed the quota of user?
 
 ## Simple batch script
 
