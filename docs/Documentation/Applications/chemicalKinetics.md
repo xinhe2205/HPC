@@ -175,7 +175,7 @@ $ ssh -X <nodename>
 ```
 4. You are now on a compute node with [X forwarding](https://en.wikipedia.org/wiki/X_Window_System) to a FastX desktop session, ready to run GUI applications. To run Chemkin, execute the following in this new terminal tab:
 ```
-$ module load ansys/2025R1
+$ module load ansys
 $ run_rdworkbench.sh
 ```
 
