@@ -412,7 +412,7 @@ Create a source file named `mpi_diffusion.cu` with the following contents:
 With the `nvhpc` package, the MPI+CUDA C++ compiler is provided by the `mpicxx` command.  To compile the program, run:
 
 ```
-$ salloc -A <project_name> -t 00:30:00 --nodes=1 --ntasks-per-node=10 --gres=gpu:1 --partition=debug
+$ salloc -A <project_name> -t 00:30:00 --nodes=1 --ntasks-per-node=10 --gres=gpu:2 --partition=debug
 $ module load nvhpc
 $ mpicxx -o cuda_mpi_diffusion mpi_diffusion.cu -lcudart -lmpi
 ```
