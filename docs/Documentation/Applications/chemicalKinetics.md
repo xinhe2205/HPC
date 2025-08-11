@@ -157,7 +157,7 @@ $ make
 
 ### Chemkin
 
-Chemkin GUI can be accessed though a [FastX virtual desktop](https://nrel.github.io/HPC/Documentation/Viz_Analytics/virtualgl_fastx/). To use Chemkin Reaction Workbench in a FastX session, open a terminal within the FastX desktop and execute the following:
+The Chemkin GUI can be accessed though a [FastX virtual desktop](../Viz_Analytics/virtualgl_fastx.md). To use Chemkin Reaction Workbench in a FastX session, open a terminal within the FastX desktop and execute the following:
 ```
 $ module load ansys/2025R1
 $ run_rdworkbench.sh
