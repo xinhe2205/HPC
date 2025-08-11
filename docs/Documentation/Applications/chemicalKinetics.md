@@ -155,7 +155,7 @@ $ make TPL
 $ make
 ``` 
 
-###Chemkin
+### Chemkin
 
 Chemkin GUI can be accessed though a [FastX virtual desktop](https://nrel.github.io/HPC/Documentation/Viz_Analytics/virtualgl_fastx/). To use Chemkin Reaction Workbench in a FastX session, open a terminal within the FastX desktop and execute the following:
 ```
