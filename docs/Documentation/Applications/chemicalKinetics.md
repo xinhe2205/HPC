@@ -162,7 +162,7 @@ The Chemkin GUI can be accessed though a [FastX virtual desktop](../Viz_Analytic
 $ module load ansys/2025R1
 $ run_rdworkbench.sh
 ```
-For resourse intensive operations, please run Chemkin through a dedicated compute node. The steps are as follows:
+For resource intensive operations, please run Chemkin through a dedicated compute node. The steps are as follows:
 
 1. Open a terminal in a FastX session and ask for an [allocation](../Slurm/interactive_jobs.md). For example,
 ```
