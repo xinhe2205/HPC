@@ -164,7 +164,7 @@ $ run_rdworkbench.sh
 ```
 For resourse intensive operations, please run Chemkin through a dedicated compute node. The steps are as follows:
 
-1. Open a terminal in a FastX session and ask for an [allocation](https://nrel.github.io/HPC/Documentation/Slurm/interactive_jobs/). For example,
+1. Open a terminal in a FastX session and ask for an [allocation](../Slurm/interactive_jobs.md). For example,
 ```
 $ salloc -A <projectname> -t 02:00:00 --nodes=1 --ntasks-per-node=20 --gres=gpu:1
 ```
