@@ -173,7 +173,7 @@ $ salloc -A <projectname> -t 02:00:00 --nodes=1 --ntasks-per-node=20 --gres=gpu:
 ```
 $ ssh -X <nodename>
 ```
-4. You are now on a compute node with [X forwarding](https://en.wikipedia.org/wiki/X_Window_System) to FastX desktop session, ready to run GUI applications. To run Chemkin, execute the following in this new terminal tab:
+4. You are now on a compute node with [X forwarding](https://en.wikipedia.org/wiki/X_Window_System) to a FastX desktop session, ready to run GUI applications. To run Chemkin, execute the following in this new terminal tab:
 ```
 $ module load ansys/2025R1
 $ run_rdworkbench.sh
