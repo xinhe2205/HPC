@@ -167,7 +167,7 @@ active users.
 ## Reattaching FastX Sessions
 Connections to the DAV nodes via kestrel-dav.hpc.nrel.gov will connect you to a random node. To resume a session that you have suspended, take note of the node your session is running on (kd1, kd2, kd3, kd4, kd5, kd6, or kd7) before you close the FastX client or browser window, and you may directly access that node when you are ready to reconnect at e.g. `kd#.hpc.nrel.gov` in the FastX client or through your web browser at `https://kd#.hpc.nrel.gov`. 
 
-## Compute intensive GUI applications
+## Compute Intensive GUI Applications
 
 Compute intensive applicatons can be used through a FastX session if GUI assisted operation is unavoidable. For such use cases and resource intensive operations, please run them on a dedicated compute node and interact with them through a FastX session. The steps are as follows:
 
