@@ -167,6 +167,25 @@ active users.
 ## Reattaching FastX Sessions
 Connections to the DAV nodes via kestrel-dav.hpc.nrel.gov will connect you to a random node. To resume a session that you have suspended, take note of the node your session is running on (kd1, kd2, kd3, kd4, kd5, kd6, or kd7) before you close the FastX client or browser window, and you may directly access that node when you are ready to reconnect at e.g. `kd#.hpc.nrel.gov` in the FastX client or through your web browser at `https://kd#.hpc.nrel.gov`. 
 
+## Compute intensive GUI applications
+
+Compute intensive applicatons can be used through a FastX session if GUI assisted operation is unavoidable. For such use cases and resource intensive operations, please run them on a dedicated compute node and interact with them through a FastX session. The steps are as follows:
+
+1. Open a terminal in a FastX session and ask for an [allocation](../Slurm/interactive_jobs.md). For example,
+```
+$ salloc -A <projectname> -t 02:00:00 --nodes=1 --ntasks-per-node=20 --mem=60G --gres=gpu:1
+```
+2. Wait until you obtain an allocation, The terminal will display `<username>@<nodename>` when successful.
+3. Open a new terminal tab by right clicking on empty in the terminal. In the new terminal tab, execute the following to connect to the node you have been allocated.
+```
+$ ssh -X <nodename>
+```
+4. You are now on a compute node with [X forwarding](https://en.wikipedia.org/wiki/X_Window_System) to a FastX desktop session, ready to run GUI applications. Your GUI enabled applications can now utilize 20 cores and 1 GPU for 2 hours, as requested in the `salloc` command above. For example, to run Chemkin Reaction Workbench, execute the following in this new terminal tab:
+```
+$ module load ansys
+$ run_rdworkbench.sh
+```
+
 ## Troubleshooting
 
 #### Could not connect to session bus: Failed to connect to socket /tmp/dbus-XXX: Connection refused
