@@ -55,9 +55,9 @@ Hello, World!
  
 Each CUDA kernel shows a different way to parallelize vector operations.
 The main function walks through allocation, kernel launches, and cleanup.
-Create a source file named `matrixMultiplication.cu` with the following contents:
+Create a source file named `stream.cu` with the following contents:
 
-??? example "matrixMultiplication.cu"
+??? example "stream.cu"
     ```
     #include <iostream>
     #include <cassert>
@@ -191,13 +191,13 @@ With the `nvhpc` package, the CUDA C++ compiler is provided by the `nvcc` comman
 ```
 $ salloc -A <project_name> -t 00:30:00 --nodes=1 --ntasks-per-node=10 --gres=gpu:1 --partition=debug
 $ module load nvhpc
-$ nvcc -o cuda_matrixMultiplication matrixMultiplication.cu
+$ nvcc -o cuda_stream stream.cu
 ```
 
-This creates an executable named `cuda_matrixMultiplication`.  Now run the program and observe the output:
+This creates an executable named `cuda_stream`.  Now run the program and observe the output:
 
 ```
-$ ./cuda_matrixMultiplication
+$ ./cuda_stream
 All operations completed successfully!
 ```
 
