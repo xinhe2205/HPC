@@ -8,10 +8,6 @@ parent: Transferring Data ---
 systems and another data center, or even a laptop off-site, we recommend using
 Globus.*
 
-A supporting set of instructions for requesting a Globus account and data
-transfer using Globus is available on the [HPC NREL
-Website](https://www.nrel.gov/hpc/globus-file-transfer.html)
-
 ## What Is Globus?
 
 Globus provides services for research data management, including file transfer.
